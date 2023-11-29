@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="py-5 text-center">
+        <h2 th:text="#{page.addItem}">商品登録</h2>
+    </div>
+
+    <form action="item.html" th:action th:object="${item}" method="post">
+        <div>
+            <label for="itemName" th:text="#{label.item.itemName}">商品名</label>
+            <input type="text" id="itemName" th:field="*{itemName}" class="form-control" placeholder="商品名を入力してください">
+        </div>
+        <div>
+            <label for="price" th:text="#{label.item.price}">価格</label>
+            <input type="text" id="price" th:field="*{price}" class="form-control" placeholder="価格を入力してください">
+        </div>
+        <div>
+            <label for="quantity" th:text="#{label.item.quantity}">数量</label>
+            <input type="text" id="quantity" th:field="*{quantity}" class="form-control" placeholder="数量を入力してください">
+        </div>
+
+        <hr class="my-4">
+
+        <div class="row">
+            <div class="col">
+                <<button type="submit" th:text="#{button.save}">保存</button>
+            </div>
+            <div class="col">
+                <button class="w-100 btn btn-secondary btn-lg"
+                        onclick="location.href='items.html'"
+                        th:onclick="|location.href='@{/message/items}'|"
+                        th:text="#{button.cancel}">キャンセル</button>
+            </div>
+        </div>
+
+    </form>
+
+</div> <!-- /container -->
+</body>
+</html>
